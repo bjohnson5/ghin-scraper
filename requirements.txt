@@ -1,4 +1,0 @@
-selenium
-BeautifulSoup
-urllib.request
-firefox

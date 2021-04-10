@@ -23,3 +23,8 @@ run.bat
 To run the scraper on Linux:
 ============================
 run.sh
+
+Tips
+====
+If the scores you want to export have a "Load More" button on the bottom of the page, click that before running the script.
+If the "New login info" banner is showing on the page, close that before running the script.
