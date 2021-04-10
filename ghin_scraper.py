@@ -84,8 +84,6 @@ input("Login and navigate to the page with the scores you want to export. Then p
 html = browser.page_source
 time.sleep(2)
 
-output_file = "/home/blake/Projects/ghin-scraper/2020_test.csv"
-
 parsed_html = BeautifulSoup(html, features="html.parser")
 scores = parsed_html.findAll('div', attrs={'class':"card"})
 
@@ -109,7 +107,9 @@ for s in scores:
     row = {'Score': score.text, 'Date': date.text, 'Rating': rating.text, 'PCC': pcc.text, 'Diff': diff.text, 'Course': course.text.strip(), 'Combined ID': combined_id}
     rows.append(row)
 
-with open(output_file, 'w') as f:
+output_file = input("Enter an output file name (must have .csv extension):")
+
+with open(output_file, 'w+') as f:
     writer = csv.DictWriter(f, fieldnames=['Score', 'Date', 'Rating', 'PCC', 'Diff', 'Course', 'Combined ID'])
     writer.writeheader()
     for r in rows:
@@ -119,4 +119,7 @@ with open(output_file, 'w') as f:
     combined_writer.writeheader()
     for cr in combined_rows:
         combined_writer.writerow(cr)
+
+browser.close()
+exit(0)
 
